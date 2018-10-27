@@ -8,10 +8,10 @@ import 'typeface-open-sans';
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
 import ProjectCard from '../components/ProjectCard';
-import { rotate, UpDown, UpDownWide, waveAnimation } from '../styles/animations';
+import { rotate, UpDown, UpDownWide, waveAnimation, mapleFill, FallingAnimation, FallingAnimation2, heart } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
-import triangle from '../images/triangle.svg';
+import mapleLeaf from '../images/mapleLeaf.svg';
 import avatar from '../images/avatar.jpg';
 import '../styles/global';
 
@@ -22,6 +22,7 @@ const Divider = styled(ParallaxLayer)`
     fill: ${props => props.fill};
   }
   clip-path: ${props => props.clipPath};
+  transform-style: preserve-3d;
 `;
 
 const DividerMiddle = styled(Divider)`
@@ -41,8 +42,8 @@ const Inner = styled.div`
 `;
 
 const BigTitle = styled.h1`
-  ${tw('text-5xl lg:text-6xl font-serif text-white mb-6 tracking-wide')};
-  text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
+  ${tw('text-5xl lg:text-6xl lg:w-full font-serif text-white mb-6 tracking-wide')};
+  text-shadow: 0 5px 30px rgba(0, 0, 0, 1);
 `;
 
 const Title = styled.h1`
@@ -52,7 +53,7 @@ const Title = styled.h1`
     content: '';
     width: 40px;
     height: 40px;
-    background: url(${triangle});
+    background: url(${mapleLeaf});
     position: absolute;
     background-size: 40px;
     animation: ${rotate} 4s linear infinite;
@@ -112,8 +113,9 @@ const AboutDesc = styled.p`
 const ContactText = styled.p`
   ${tw('text-grey-light font-sans text-xl md:text-2xl lg:text-3xl')};
   a {
-    color: #e07628;
-    text-decoration: none;
+    ${tw('text-teal')};
+    font-style: italic;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -131,139 +133,155 @@ const Index = () => (
     <Parallax pages={5}>
       <Divider speed={0.2} offset={0}>
         <UpDown>
-          <SVG icon="triangle" className={hidden} width={48} stroke={colors.orange} left="10%" top="20%" />
-          <SVG icon="hexa" width={48} stroke={colors.red} left="60%" top="70%" />
-          <SVG icon="box" width={6} fill={colors['grey-darker']} left="60%" top="15%" />
+          <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e6c200"}/>
+          <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#31ba22"} stroke={colors.purple}   />
+          <SVG icon="box" width={26} stroke={colors.teal}  fill={colors.purple} left="60%" top="15%" />
         </UpDown>
         <UpDownWide>
-          <SVG icon="arrowUp" className={hidden} width={16} fill={colors['blue-dark']} left="80%" top="10%" />
-          <SVG icon="triangle" width={12} stroke={colors.white} left="90%" top="50%" />
-          <SVG icon="circle" width={16} fill={colors['grey-darker']} left="70%" top="90%" />
-          <SVG icon="triangle" width={16} stroke={colors['grey-darkest']} left="30%" top="65%" />
-          <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="75%" top="10%" />
-          <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
+          {/*<SVG icon="arrowUp" className={hidden} width={16} fill={colors['blue-dark']} left="80%" top="10%" />*/}
+          <SVG icon="mapleLeaf" width={12} stroke={colors.orange} fill={"#e6c200"} left="90%" top="50%" />
+          {/*<SVG icon="circle" width={16} fill={colors['grey-darkest']} left="70%" top="90%" />*/}
+          <SVG icon="mapleLeaf" width={16} stroke={colors.orange} fill={"#e6c200"} left="30%" top="65%" />
+          {/*<SVG icon="circle" width={6} fill={colors['grey-darkest']}left="75%" top="10%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />*/}
         </UpDownWide>
-        <SVG icon="circle" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />
-        <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />
-        <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />
-        <SVG icon="upDown" width={8} fill={colors['grey-darkest']} left="95%" top="90%" />
-        <SVG icon="upDown" className={hidden} width={24} fill={colors['grey-darker']} left="40%" top="80%" />
-        <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
-        <SVG icon="circle" width={64} fill={colors.green} left="95%" top="5%" />
-        <SVG icon="box" className={hidden} width={64} fill={colors.purple} left="5%" top="90%" />
-        <SVG icon="box" width={6} fill={colors['grey-darkest']} left="10%" top="10%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="40%" top="30%" />
-        <SVG icon="hexa" width={16} stroke={colors['grey-darker']} left="10%" top="50%" />
-        <SVG icon="hexa" width={8} stroke={colors['grey-darker']} left="80%" top="70%" />
+        {/*<SVG icon="circle" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />*/}
+        {/*<SVG icon="circle" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />*/}
+        {/*<SVG icon="circle" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />*/}
+        {/*<SVG icon="upDown" width={8} fill={colors['grey-darkest']} left="95%" top="90%" />*/}
+        {/*<SVG icon="upDown" className={hidden} width={24} fill={colors['grey-darker']} left="40%" top="80%" />*/}
+        {/*<SVG icon="mapleLeaf" width={8} stroke={colors['grey-darker']} fill={"#aa4400"} left="25%" top="5%" />*/}
+        {/*<SVG icon="circle" width={64} fill={colors.green} left="95%" top="5%" />*/}
+        {/*<SVG icon="box" className={hidden} width={64} fill={colors.purple} left="5%" top="90%" />*/}
+        {/*<SVG icon="box" width={16} fill={colors.purple} left="10%" top="10%" />*/}
+        {/*<SVG icon="box" width={12} fill={colors.purple} left="40%" top="30%" />*/}
+        <SVG icon="hexa" width={16} stroke={colors.teal} left="10%" top="50%" />
+        {/*<SVG icon="hexa" width={18} stroke={colors.teal} left="80%" top="70%" />*/}
       </Divider>
       <Content speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
-            Hello, <br /> I'm John Doe.
+            Hey, <br /> I'm Gladden.
           </BigTitle>
-          <Subtitle>I'm creating noice web experiences for the next generation of consumer-facing companies.</Subtitle>
+          <Subtitle>I'm new.</Subtitle>
         </Hero>
       </Content>
       <DividerMiddle
-        bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)"
+        bg="linear-gradient(to right, #415680 0%,  #3c3c3c 100%)"
         speed={-0.2}
         offset={1.1}
         factor={2}
       />
       <Content speed={0.4} offset={1.2} factor={2}>
         <Inner>
-          <Title>Projects</Title>
+          <Title>Pics</Title>
           <ProjectsWrapper>
-            <ProjectCard
-              title="Freiheit"
-              link="https://www.behance.net/gallery/58937147/Freiheit"
-              bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
-            >
-              This project is my entry to Adobe's #ChallengeYourPerspective contest.
-            </ProjectCard>
-            <ProjectCard
-              title="Harry Potter"
-              link="https://www.behance.net/gallery/52915793/Harry-Potter"
-              bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
-            >
-              I entered the DOCMA 2017 award with this Harry Potter inspired image.
-            </ProjectCard>
-            <ProjectCard
-              title="Tomb Raider"
-              link="https://www.behance.net/gallery/43907099/Tomb-Raider"
-              bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
-            >
-              Recreation of a Tomb Raider Wallpaper (Fan Art)
-            </ProjectCard>
-            <ProjectCard
-              title="Eagle"
-              link="https://www.behance.net/gallery/38068151/Eagle"
-              bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
-            >
-              A fantasy image manipulation relocating the habitat of wild animals.
-            </ProjectCard>
+            {/*<ProjectCard*/}
+              {/*title="Freiheit"*/}
+              {/*link="https://www.behance.net/gallery/58937147/Freiheit"*/}
+              {/*bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"*/}
+            {/*>*/}
+              {/*This project is my entry to Adobe's #ChallengeYourPerspective contest.*/}
+            {/*</ProjectCard>*/}
+            {/*<ProjectCard*/}
+              {/*title="Harry Potter"*/}
+              {/*link="https://www.behance.net/gallery/52915793/Harry-Potter"*/}
+              {/*bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"*/}
+            {/*>*/}
+              {/*I entered the DOCMA 2017 award with this Harry Potter inspired image.*/}
+            {/*</ProjectCard>*/}
+            {/*<ProjectCard*/}
+              {/*title="Tomb Raider"*/}
+              {/*link="https://www.behance.net/gallery/43907099/Tomb-Raider"*/}
+              {/*bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"*/}
+            {/*>*/}
+              {/*Recreation of a Tomb Raider Wallpaper (Fan Art)*/}
+            {/*</ProjectCard>*/}
+            {/*<ProjectCard*/}
+              {/*title="Eagle"*/}
+              {/*link="https://www.behance.net/gallery/38068151/Eagle"*/}
+              {/*bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"*/}
+            {/*>*/}
+              {/*A fantasy image manipulation relocating the habitat of wild animals.*/}
+            {/*</ProjectCard>*/}
           </ProjectsWrapper>
         </Inner>
       </Content>
       <Divider speed={0.1} offset={1} factor={2}>
-        <UpDown>
-          <SVG icon="box" width={6} fill={colors.white} left="85%" top="75%" />
-          <SVG icon="upDown" width={8} fill={colors.teal} left="70%" top="20%" />
-          <SVG icon="triangle" width={8} stroke={colors.orange} left="25%" top="5%" />
-          <SVG icon="circle" className={hidden} width={24} fill={colors.white} left="17%" top="60%" />
-        </UpDown>
-        <UpDownWide>
-          <SVG icon="arrowUp" className={hidden} width={16} fill={colors.green} left="20%" top="90%" />
-          <SVG icon="triangle" width={12} stroke={colors.white} left="90%" top="30%" />
-          <SVG icon="circle" width={16} fill={colors.yellow} left="70%" top="90%" />
-          <SVG icon="triangle" className={hidden} width={16} stroke={colors.teal} left="18%" top="75%" />
-          <SVG icon="circle" width={6} fill={colors.white} left="75%" top="10%" />
-          <SVG icon="upDown" className={hidden} width={8} fill={colors.green} left="45%" top="10%" />
-        </UpDownWide>
-        <SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />
-        <SVG icon="circle" width={12} fill={colors.pink} left="80%" top="60%" />
-        <SVG icon="box" width={6} fill={colors.orange} left="10%" top="10%" />
-        <SVG icon="box" width={12} fill={colors.yellow} left="29%" top="26%" />
-        <SVG icon="hexa" width={16} stroke={colors.red} left="75%" top="30%" />
-        <SVG icon="hexa" width={8} stroke={colors.yellow} left="80%" top="70%" />
+        {/*<UpDown>*/}
+          {/*<SVG icon="box" width={6} fill={colors.purple} left="85%" top="75%" />*/}
+          {/*<SVG icon="upDown" width={8} fill={colors.teal} left="70%" top="20%" />*/}
+          {/*<SVG icon="mapleLeaf" width={8} stroke={colors.white} fill={"#aa4400"} left="25%" top="5%" />*/}
+          {/*<SVG icon="circle" className={hidden} width={24} fill={colors.white} left="17%" top="60%" />*/}
+        {/*</UpDown>*/}
+        {/*<UpDownWide>*/}
+          {/*<SVG icon="arrowUp" className={hidden} width={16} fill={colors.green} left="20%" top="90%" />*/}
+          {/*<SVG icon="mapleLeaf" width={12} stroke={colors.white} fill={"#aa4400"} left="90%" top="30%" />*/}
+          {/*<SVG icon="circle" width={16} fill={colors.yellow} left="70%" top="90%" />*/}
+          {/*<SVG icon="mapleLeaf" className={hidden} width={16} stroke={colors.teal} left="18%" top="75%" />*/}
+          {/*<SVG icon="circle" width={6} fill={colors.white} left="75%" top="10%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors.green} left="45%" top="10%" />*/}
+        {/*</UpDownWide>*/}
+        {/*<FallingAnimation>*/}
+          {/*/!*<SVG icon="arrowUp" className={hidden} width={16} fill={colors.green} left="20%" top="90%" />*!/*/}
+          {/*<SVG icon="mapleLeaf" fill={"#aa4400"}  width={12} stroke={colors.white} left="40%" top="0%" />*/}
+          {/*/!*<SVG icon="circle" width={16} fill={colors.yellow} left="70%" top="90%" />*!/*/}
+          {/*<SVG icon="hexa" className={hidden} width={16} stroke={colors.teal} left="18%" top="75%" />*/}
+          {/*/!*<SVG icon="circle" width={6} fill={colors.white} left="75%" top="10%" />*!/*/}
+          {/*/!*<SVG icon="upDown" className={hidden} width={8} fill={colors.green} left="45%" top="10%" />*!/*/}
+        {/*</FallingAnimation>*/}
+        {/*<FallingAnimation2>*/}
+            {/*/!*<SVG icon="arrowUp" className={hidden} width={16} fill={colors.green} left="20%" top="90%" />*!/*/}
+          {/*<SVG icon="mapleLeaf" fill={"#aa4400"}  width={12} stroke={colors.white} left="40%" top="0%" />*/}
+            {/*/!*<SVG icon="circle" width={16} fill={colors.yellow} left="70%" top="90%" />*!/*/}
+          {/*<SVG icon="hexa" className={hidden} width={16} stroke={colors.teal} left="18%" top="75%" />*/}
+            {/*/!*<SVG icon="circle" width={6} fill={colors.white} left="75%" top="10%" />*!/*/}
+            {/*/!*<SVG icon="upDown" className={hidden} width={8} fill={colors.green} left="45%" top="10%" />*!/*/}
+        {/*</FallingAnimation2>*/}
+        {/*<SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />*/}
+        {/*<SVG icon="circle" width={12} fill={colors.pink} left="80%" top="60%" />*/}
+        {/*<SVG icon="box" width={6} fill={colors.orange} left="10%" top="10%" />*/}
+        {/*<SVG icon="box" width={12} fill={colors.yellow} left="29%" top="26%" />*/}
+        {/*<SVG icon="hexa" width={16} stroke={colors.red} left="75%" top="30%" />*/}
+        {/*<SVG icon="hexa" width={8} stroke={colors.yellow} left="80%" top="70%" />*/}
       </Divider>
-      <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={3} />
+      <Divider  bg="linear-gradient(to right, #3c3c3c 0%, #f76300 100%)" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={3} />
       <Divider speed={0.1} offset={3}>
-        <UpDown>
-          <SVG icon="box" className={hidden} width={6} fill={colors.blue} left="50%" top="75%" />
-          <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />
-          <SVG icon="triangle" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />
-          <SVG icon="upDown" className={hidden} width={24} fill={colors.orange} left="80%" top="80%" />
-        </UpDown>
-        <UpDownWide>
-          <SVG icon="arrowUp" className={hidden} width={16} fill={colors.purple} left="5%" top="80%" />
-          <SVG icon="triangle" width={12} stroke={colors.white} left="95%" top="50%" />
-          <SVG icon="circle" width={6} fill={colors.white} left="85%" top="15%" />
-          <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
-        </UpDownWide>
-        <SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />
-        <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />
-        <SVG icon="box" width={6} fill={colors.orange} left="10%" top="10%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
-        <SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
+        {/*<UpDown>*/}
+          {/*<SVG icon="box" className={hidden} width={6} fill={colors.blue} left="50%" top="75%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />*/}
+          {/*<SVG icon="mapleLeaf" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={24} fill={colors.orange} left="80%" top="80%" />*/}
+        {/*</UpDown>*/}
+        {/*<UpDownWide>*/}
+          {/*<SVG icon="arrowUp" className={hidden} width={16} fill={colors.purple} left="5%" top="80%" />*/}
+          {/*<SVG icon="mapleLeaf" width={12} stroke={colors.white} left="95%" top="50%" />*/}
+          {/*<SVG icon="circle" width={6} fill={colors.white} left="85%" top="15%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />*/}
+        {/*</UpDownWide>*/}
+        {/*<SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />*/}
+        {/*<SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />*/}
+        {/*<SVG icon="box" width={6} fill={colors.orange} left="10%" top="10%" />*/}
+        {/*<SVG icon="box" width={12} fill={colors.purple} left="20%" top="30%" />*/}
+        {/*<SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />*/}
       </Divider>
       <Content speed={0.4} offset={3}>
         <Inner>
           <Title>About</Title>
-          <AboutHero>
-            <Avatar src={avatar} alt="John Doe" />
-            <AboutSub>
-              The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-              Emoji into my speech to better express myself. Winky face.
-            </AboutSub>
-          </AboutHero>
-          <AboutDesc>
-            You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel
-            every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should
-            make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The
-            kids want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that
-            all right?
-          </AboutDesc>
+          {/*<AboutHero>*/}
+            {/*<Avatar src={avatar} alt="John Doe" />*/}
+            {/*<AboutSub>*/}
+              {/*The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating*/}
+              {/*Emoji into my speech to better express myself. Winky face.*/}
+            {/*</AboutSub>*/}
+          {/*</AboutHero>*/}
+          {/*<AboutDesc>*/}
+            {/*You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel*/}
+            {/*every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should*/}
+            {/*make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The*/}
+            {/*kids want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that*/}
+            {/*all right?*/}
+          {/*</AboutDesc>*/}
         </Inner>
       </Content>
       <Divider fill="#23262b" speed={0.2} offset={4}>
@@ -286,30 +304,27 @@ const Index = () => (
         <Inner>
           <Title>Get in touch</Title>
           <ContactText>
-            Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
-            <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
-            <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
+            Say <a href="mailto:mfinkca@gmail.com">Hello</a> to my mom and pop :)
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2018 by Gatsby Starter Portfolio Cara.{' '}
-          <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">Github Repository</a>.
+          Made with <SVG icon="heart" fill="#e00079" left="inherit" top="10px" className={heart}/> for Gladden Fink.
         </Footer>
       </Content>
       <Divider speed={0.1} offset={4}>
-        <UpDown>
-          <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />
-          <SVG icon="triangle" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />
-        </UpDown>
-        <UpDownWide>
-          <SVG icon="triangle" width={12} stroke={colors.white} left="95%" top="50%" />
-          <SVG icon="circle" width={6} fill={colors.white} left="85%" top="15%" />
-          <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
-        </UpDownWide>
-        <SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />
-        <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
-        <SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
+        {/*// <UpDown>*/}
+        {/*//   <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />*/}
+        {/*//   <SVG icon="mapleLeaf" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />*/}
+        {/*</UpDown>*/}
+        {/*<UpDownWide>*/}
+          {/*<SVG icon="mapleLeaf" width={12} stroke={colors.white} left="95%" top="50%" />*/}
+          {/*<SVG icon="circle" width={6} fill={colors.white} left="85%" top="15%" />*/}
+          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />*/}
+        {/*</UpDownWide>*/}
+        {/*<SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />*/}
+        {/*<SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />*/}
+        {/*<SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />*/}
+        {/*<SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />*/}
       </Divider>
     </Parallax>
   </React.Fragment>

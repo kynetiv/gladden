@@ -1,5 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 import { injectGlobal } from 'emotion';
+import woodTexture from '../images/wood-texture.svg';
 
 injectGlobal`
   *, *:before, *:after {
@@ -11,7 +12,8 @@ injectGlobal`
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-color: #161719;
+    background: url("${woodTexture}");
+    background-size: cover;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
