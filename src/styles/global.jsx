@@ -11,7 +11,6 @@ injectGlobal`
     overflow-x: hidden;
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background: url("${woodTexture}");
     background-size: cover;
     -webkit-font-smoothing: antialiased;

@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import Link from 'gatsby-link';
 
-const Wrapper = styled.a`
+const Wrapper = styled.div`
   width: 100%;
   ${tw('shadow-lg relative no-underline rounded-lg px-8 py-8 md:py-24 text-white')};
   background: ${props => props.bg};
@@ -24,10 +25,12 @@ const Title = styled.div`
 `;
 
 const ProjectCard = ({ title, link, children, bg }) => (
-  <Wrapper href={link} target="_blank" rel="noopener noreferrer" bg={bg}>
-    <Text>{children}</Text>
-    <Title>{title}</Title>
-  </Wrapper>
+    <Link to={link}>
+      <Wrapper href={link} rel="noopener noreferrer" bg={bg}>
+        <Text>{children}</Text>
+        <Title>{title}</Title>
+      </Wrapper>
+    </Link>
 );
 
 export default ProjectCard;

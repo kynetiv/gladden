@@ -19,6 +19,7 @@ module.exports = {
         name: 'images',
       },
     },
+    'gladden-pics',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

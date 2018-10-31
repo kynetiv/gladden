@@ -133,15 +133,15 @@ const Index = () => (
     <Parallax pages={5}>
       <Divider speed={0.2} offset={0}>
         <UpDown>
-          <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e6c200"}/>
-          <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#31ba22"} stroke={colors.purple}   />
-          <SVG icon="box" width={26} stroke={colors.teal}  fill={colors.purple} left="60%" top="15%" />
+          <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e2d661"}/>
+          <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#aee261"} stroke={"#b28cea"}   />
+          <SVG icon="box" width={26} stroke={"#4ba2de"}  fill={"#b28cea"} left="60%" top="15%" />
         </UpDown>
         <UpDownWide>
           {/*<SVG icon="arrowUp" className={hidden} width={16} fill={colors['blue-dark']} left="80%" top="10%" />*/}
-          <SVG icon="mapleLeaf" width={12} stroke={colors.orange} fill={"#e6c200"} left="90%" top="50%" />
+          <SVG icon="mapleLeaf" width={12} stroke={colors.orange} fill={"#e2d661"} left="90%" top="50%" />
           {/*<SVG icon="circle" width={16} fill={colors['grey-darkest']} left="70%" top="90%" />*/}
-          <SVG icon="mapleLeaf" width={16} stroke={colors.orange} fill={"#e6c200"} left="30%" top="65%" />
+          <SVG icon="mapleLeaf" width={16} stroke={colors.orange} fill={"#e2d661"} left="30%" top="65%" />
           {/*<SVG icon="circle" width={6} fill={colors['grey-darkest']}left="75%" top="10%" />*/}
           {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />*/}
         </UpDownWide>
@@ -176,34 +176,13 @@ const Index = () => (
         <Inner>
           <Title>Pics</Title>
           <ProjectsWrapper>
-            {/*<ProjectCard*/}
-              {/*title="Freiheit"*/}
-              {/*link="https://www.behance.net/gallery/58937147/Freiheit"*/}
-              {/*bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"*/}
-            {/*>*/}
-              {/*This project is my entry to Adobe's #ChallengeYourPerspective contest.*/}
-            {/*</ProjectCard>*/}
-            {/*<ProjectCard*/}
-              {/*title="Harry Potter"*/}
-              {/*link="https://www.behance.net/gallery/52915793/Harry-Potter"*/}
-              {/*bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"*/}
-            {/*>*/}
-              {/*I entered the DOCMA 2017 award with this Harry Potter inspired image.*/}
-            {/*</ProjectCard>*/}
-            {/*<ProjectCard*/}
-              {/*title="Tomb Raider"*/}
-              {/*link="https://www.behance.net/gallery/43907099/Tomb-Raider"*/}
-              {/*bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"*/}
-            {/*>*/}
-              {/*Recreation of a Tomb Raider Wallpaper (Fan Art)*/}
-            {/*</ProjectCard>*/}
-            {/*<ProjectCard*/}
-              {/*title="Eagle"*/}
-              {/*link="https://www.behance.net/gallery/38068151/Eagle"*/}
-              {/*bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"*/}
-            {/*>*/}
-              {/*A fantasy image manipulation relocating the habitat of wild animals.*/}
-            {/*</ProjectCard>*/}
+            <ProjectCard
+              title="Newborn"
+              link="/newborn"
+              bg="linear-gradient(to right, #aee261 0%, #d3c8be 100%)"
+              children=""
+            >
+            </ProjectCard>
           </ProjectsWrapper>
         </Inner>
       </Content>
@@ -245,7 +224,7 @@ const Index = () => (
         {/*<SVG icon="hexa" width={16} stroke={colors.red} left="75%" top="30%" />*/}
         {/*<SVG icon="hexa" width={8} stroke={colors.yellow} left="80%" top="70%" />*/}
       </Divider>
-      <Divider  bg="linear-gradient(to right, #3c3c3c 0%, #f76300 100%)" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={3} />
+      <Divider  bg="linear-gradient(to right, #3c3c3c 0%, #aee261 100%)" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={3} />
       <Divider speed={0.1} offset={3}>
         {/*<UpDown>*/}
           {/*<SVG icon="box" className={hidden} width={6} fill={colors.blue} left="50%" top="75%" />*/}
