@@ -8,7 +8,7 @@ import 'typeface-open-sans';
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
 import ProjectCard from '../components/ProjectCard';
-import { rotate, UpDown, UpDownWide, waveAnimation, mapleFill, FallingAnimation, FallingAnimation2, heart } from '../styles/animations';
+import { rotate, UpDown, UpDownWide, waveAnimation, heart } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import mapleLeaf from '../images/mapleLeaf.svg';
@@ -251,17 +251,12 @@ const Index = () => (
         <Inner>
           <Title>About</Title>
           <AboutHero>
-            <AboutSub>
-             I'm the latest edition to the Fink family and am so glad to finally be here! Get ready fo the snuggles!
-            </AboutSub>
+            {/*<AboutSub>*/}
+            {/*</AboutSub>*/}
           </AboutHero>
-          {/*<AboutDesc>*/}
-            {/*You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel*/}
-            {/*every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should*/}
-            {/*make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The*/}
-            {/*kids want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that*/}
-            {/*all right?*/}
-          {/*</AboutDesc>*/}
+          <AboutDesc>
+            I'm the latest edition to the Fink family and so glad to finally be here! Get ready fo the snuggles!
+          </AboutDesc>
         </Inner>
       </Content>
       <Divider fill="#23262b" speed={0.2} offset={4}>

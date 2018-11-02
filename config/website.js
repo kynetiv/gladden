@@ -8,7 +8,7 @@ module.exports = {
   siteUrl: 'https://gladdenfink.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: '/logos/logo-1024.png', // Used for SEO and manifest
-  siteDescription: 'Hello World',
+  siteDescription: 'Hey World',
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   // userTwitter: '@cara', // Twitter Username

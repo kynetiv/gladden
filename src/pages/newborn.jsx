@@ -24,8 +24,8 @@ query NewbornPics {
     edges {
       node {
         childImageSharp {
-          fixed(width: 500) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 700) {
+            ...GatsbyImageSharpFluid
           }
         }
       id

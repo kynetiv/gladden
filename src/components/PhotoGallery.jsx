@@ -2,39 +2,35 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import '../styles/global';
-import Masonry from 'react-masonry-component';
+import Masonry from 'react-masonry-css'
 import Img from 'gatsby-image'
 import Lightbox from 'react-images';
 
-const masonryOptions = {
-    transitionDuration: 3,
-    isFitWidth: true,
-    gutter: 10,
-    isOriginLeft: true,
-    columnWidth: 1
-};
-
 const masonryClass = css`
-  margin: 0 auto;
+  display: flex;
+  width: auto;
   list-style-type: none !important;
 `;
 
-const imageLiClass = css`
- ${tw('lg:m-4' )};
-`;
+const masonryColumnClass = css``;
 
-const imagesLoadedOptions = { background: '.my-bg-image-el' };
+const imageLiClass = css`
+ ${tw('lg:m-2' )};
+`;
 
 export default class PhotoGallery extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props.images.edges);
+        // console.log(props.images.edges);
         this.state = {
             shareOpen: false,
             anchorEl: null,
             lightbox: false,
-            photos: props.images.edges.map(photo => { return Object.assign({ src: photo.node.childImageSharp.fixed.src, srcSet: photo.node.childImageSharp.fixed.srcSet })}),
+            photos: props.images.edges.map(photo => Object.assign({
+                src: photo.node.childImageSharp.fluid.src,
+                srcSet: photo.node.childImageSharp.fluid.srcSet
+            })),
         };
     }
 
@@ -60,20 +56,24 @@ export default class PhotoGallery extends React.Component {
     render() {
         const { images } = this.props;
 
+        const breakpointColumnsObj = {
+            default: 4,
+            1100: 3,
+            700: 2,
+            500: 1
+        };
+
         return (
             <div>
                 <Masonry
                     className={masonryClass}
-                    elementType={'ul'} // default 'div'
-                    options={masonryOptions} // default {}
-                    disableImagesLoaded={false} // default false
-                    updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-                    imagesLoadedOptions={imagesLoadedOptions} // default {}
+                    breakpointCols={breakpointColumnsObj}
+                    columnClassName={masonryColumnClass}
                 >
                     {images.edges.map((photo, i) => (
                     <li className={imageLiClass} key={photo.node.id}>
-                        <a href={photo.node.childImageSharp.fixed.src} onClick={e => this.openLightbox(i, e)}>
-                            <Img key={i} fixed={photo.node.childImageSharp.fixed} />
+                        <a href={photo.node.childImageSharp.fluid.src} onClick={e => this.openLightbox(i, e)}>
+                            <Img key={i} fluid={photo.node.childImageSharp.fluid} />
                         </a>
                     </li>
                     ))}
