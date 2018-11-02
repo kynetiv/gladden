@@ -48,6 +48,13 @@ exports.sourceNodes = async ({actions, createNodeId, store, cache}) => {
                     name: `${slug}`,
                     value: 'true',
                 });
+
+                await createNodeField({
+                    node: fileNode,
+                    name: 'source',
+                    value: BASE_API_URI + img.img
+
+                })
             } catch (error) {
                 console.warn('error creating node', error);
             }

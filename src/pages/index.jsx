@@ -12,7 +12,7 @@ import { rotate, UpDown, UpDownWide, waveAnimation, mapleFill, FallingAnimation,
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import mapleLeaf from '../images/mapleLeaf.svg';
-import avatar from '../images/avatar.jpg';
+// import avatar from '../images/avatar.jpg';
 import '../styles/global';
 
 const Divider = styled(ParallaxLayer)`
@@ -112,6 +112,7 @@ const AboutDesc = styled.p`
 
 const ContactText = styled.p`
   ${tw('text-grey-light font-sans text-xl md:text-2xl lg:text-3xl')};
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 1);
   a {
     ${tw('text-teal')};
     font-style: italic;
@@ -121,9 +122,11 @@ const ContactText = styled.p`
 
 const Footer = styled.footer`
   ${tw('text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg')};
+  text-shadow: 0 5px 30px rgba(0, 0, 0, 1);
   a {
     color: #e07628;
     text-decoration: none;
+    
   }
 `;
 
@@ -247,13 +250,11 @@ const Index = () => (
       <Content speed={0.4} offset={3}>
         <Inner>
           <Title>About</Title>
-          {/*<AboutHero>*/}
-            {/*<Avatar src={avatar} alt="John Doe" />*/}
-            {/*<AboutSub>*/}
-              {/*The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating*/}
-              {/*Emoji into my speech to better express myself. Winky face.*/}
-            {/*</AboutSub>*/}
-          {/*</AboutHero>*/}
+          <AboutHero>
+            <AboutSub>
+             I'm the latest edition to the Fink family and am so glad to finally be here! Get ready fo the snuggles!
+            </AboutSub>
+          </AboutHero>
           {/*<AboutDesc>*/}
             {/*You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel*/}
             {/*every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should*/}
