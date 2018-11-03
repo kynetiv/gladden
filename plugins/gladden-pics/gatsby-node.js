@@ -20,7 +20,7 @@ exports.sourceNodes = async ({actions, createNodeId, store, cache}) => {
         const {createNode, createNodeField} = actions;
         // Fetch data
         const {data} = await axios.get(
-            BASE_API_URI + 'pics?id=' + slug,
+            BASE_API_URL + 'pics?id=' + slug,
             {
                 auth
             }
