@@ -1,8 +1,8 @@
 const {createRemoteFileNode} = require(`gatsby-source-filesystem`);
 const axios = require('axios');
 
-const BASE_API_URI =
-    'http://localhost:3000/';
+const BASE_API_URL = process.env.BASE_API_URL || 'http://localhost:3000/';
+
 
 const auth = {
         username: process.env.GLADDEN_API_USER || 'admin',
@@ -30,10 +30,10 @@ exports.sourceNodes = async ({actions, createNodeId, store, cache}) => {
         const images = JSON.parse(data);
         for (const img of images) {
             let node;
-            console.log(BASE_API_URI + img.img);
+            console.log(BASE_API_URL + img.img);
             try {
                 fileNode = await createRemoteFileNode({
-                    url: BASE_API_URI + img.img,
+                    url: BASE_API_URL + img.img,
                     cache,
                     store,
                     createNode,
@@ -52,7 +52,7 @@ exports.sourceNodes = async ({actions, createNodeId, store, cache}) => {
                 await createNodeField({
                     node: fileNode,
                     name: 'source',
-                    value: BASE_API_URI + img.img
+                    value: BASE_API_URL + img.img
 
                 })
             } catch (error) {
