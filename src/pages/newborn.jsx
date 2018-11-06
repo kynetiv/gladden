@@ -32,6 +32,7 @@ query NewbornPics {
       fields {
         newborn
         source
+        fileName
       }
       }
     }

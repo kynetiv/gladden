@@ -71,7 +71,7 @@ export default class PhotoGallery extends React.Component {
                     columnClassName={masonryColumnClass}
                 >
                     {images.edges.map((photo, i) => (
-                    <li className={imageLiClass} key={photo.node.id}>
+                    <li className={imageLiClass} key={photo.node.id} orig={photo.node.fields.fileName}>
                         <a href={photo.node.childImageSharp.fluid.src} onClick={e => this.openLightbox(i, e)}>
                             <Img key={i} fluid={photo.node.childImageSharp.fluid} />
                         </a>

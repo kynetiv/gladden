@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { width as twWidth } from '../../tailwind';
 import { heartAnimation } from '../styles/animations';
+import { graphql } from 'gatsby'
 
 const Wrapper = styled.svg`
   ${tw('stroke-current absolute')};
@@ -14,14 +15,7 @@ const Wrapper = styled.svg`
   top: ${props => props.top};
 `;
 
-// <polygon
-//   strokeWidth="1px"
-//   strokeLinejoin="round"
-//   strokeMiterlimit="10"
-//   points="14.921,2.27 28.667,25.5 1.175,25.5 "
-// />
-
-const icons = {
+const icons =  {
   mapleLeaf: {
     shape: (
 
@@ -79,7 +73,7 @@ const icons = {
   }
 };
 
-const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
+const SVG = ({ stroke, fill, width, icon, left, top, className, img='', imgId='', imgStyle }) => (
   <Wrapper
     viewBox={icons[icon].viewBox}
     stroke={stroke}
@@ -89,6 +83,11 @@ const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
     top={top}
     className={className}
   >
+  <defs>
+      <pattern id={imgId} patternUnits="userSpaceOnUse" x="0" y="0" width="1000" height="700">
+          <image href={img} style={imgStyle} />
+      </pattern>
+  </defs>
     {icons[icon].shape}
   </Wrapper>
 );
@@ -103,6 +102,9 @@ SVG.propTypes = {
   left: PropTypes.string,
   top: PropTypes.string,
   className: PropTypes.string,
+  img: PropTypes.string,
+  imgId: PropTypes.string,
+  imgStyle: PropTypes.string,
 };
 
 SVG.defaultProps = {

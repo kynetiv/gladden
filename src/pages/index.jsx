@@ -14,6 +14,7 @@ import { colors } from '../../tailwind';
 import mapleLeaf from '../images/mapleLeaf.svg';
 // import avatar from '../images/avatar.jpg';
 import '../styles/global';
+import { graphql } from 'gatsby';
 
 const Divider = styled(ParallaxLayer)`
   ${tw('absolute w-full h-full')};
@@ -130,24 +131,56 @@ const Footer = styled.footer`
   }
 `;
 
-const Index = () => (
+const Index = ({data}) => {
+  // debugger;
+return (
   <React.Fragment>
     <SEO />
     <Parallax pages={5}>
       <Divider speed={0.2} offset={0}>
+        <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e2d661"}/>
+        <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#aee261"} stroke={"#b28cea"}   />
+        <SVG icon="box" width={26} stroke={"#4ba2de"}  fill={"#b28cea"} left="60%" top="15%" />
         <UpDown>
-          <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e2d661"}/>
-          <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#aee261"} stroke={"#b28cea"}   />
-          <SVG icon="box" width={26} stroke={"#4ba2de"}  fill={"#b28cea"} left="60%" top="15%" />
+          <SVG icon="mapleLeaf"
+               width="100%"
+               stroke={colors.orange}
+               left="0%" top="20%"
+               fill={`url(#${data.img1.edges[0].node.fields.fileName})`}
+               img={data.img1.edges[0].node.childImageSharp.fixed.src}
+               imgId={data.img1.edges[0].node.fields.fileName}
+               imgStyle={{transform: "translate(-80px, 5px) scale(0.5)"}}
+          />
+          <SVG icon="hexa"
+               width="100%"
+               left="60%"
+               top="70%"
+               fill={`url(#${data.img3.edges[0].node.fields.fileName})`}
+               img={data.img3.edges[0].node.childImageSharp.fixed.src}
+               imgId={data.img3.edges[0].node.fields.fileName}
+               imgStyle={{transform: "translate(-35px, -5px) scale(0.3)"}}
+               stroke={"#b28cea"}   />
+          <SVG icon="box"
+               width="100%"
+               stroke={"#4ba2de"}
+               fill={`url(#${data.img2.edges[0].node.fields.fileName})`}
+               img={data.img2.edges[0].node.childImageSharp.fixed.src}
+               imgId={data.img2.edges[0].node.fields.fileName}
+               imgStyle={{transform: "translate(-25px, -25px) scale(0.4)"}}
+               left="60%"
+               top="15%"
+          />
         </UpDown>
         <UpDownWide>
-          {/*<SVG icon="arrowUp" className={hidden} width={16} fill={colors['blue-dark']} left="80%" top="10%" />*/}
-          <SVG icon="mapleLeaf" width={12} stroke={colors.orange} fill={"#e2d661"} left="90%" top="50%" />
-          {/*<SVG icon="circle" width={16} fill={colors['grey-darkest']} left="70%" top="90%" />*/}
-          <SVG icon="mapleLeaf" width={16} stroke={colors.orange} fill={"#e2d661"} left="30%" top="65%" />
-          {/*<SVG icon="circle" width={6} fill={colors['grey-darkest']}left="75%" top="10%" />*/}
-          {/*<SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />*/}
+          <SVG icon="hexa" className={hidden} width={16} fill={"#aee261"} stroke={"#b28cea"} left="40%" top="70%" />
+          <SVG icon="mapleLeaf" width={16} stroke={colors.orange} fill={"#e2d661"} left="90%" top="50%" />
+          <SVG icon="box" width={48} stroke={"#4ba2de"}  fill={"#b28cea"} left="30%" top="90%" />
+          <SVG icon="mapleLeaf" width={48} stroke={colors.orange} fill={"#e2d661"} left="80%" top="65%" />
+          <SVG icon="hexa" width={32} fill={"#aee261"} stroke={"#b28cea"}  left="75%" top="80%" />
+          <SVG icon="box" className={hidden} width={48} stroke={"#4ba2de"} fill={"#b28cea"} left="20%" top="95%" />
         </UpDownWide>
+
+
         {/*<SVG icon="circle" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />*/}
         {/*<SVG icon="circle" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />*/}
         {/*<SVG icon="circle" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />*/}
@@ -303,6 +336,48 @@ const Index = () => (
       </Divider>
     </Parallax>
   </React.Fragment>
-);
+)};
 
 export default Index;
+
+export const homeImage = graphql`
+fragment homeImage on File {
+  childImageSharp {
+    fixed(width: 700) {
+     ...GatsbyImageSharpFixed
+    }
+  }
+  fields {
+   fileName
+  }
+}
+`;
+
+export const query = graphql`
+  query {
+  
+  img1: allFile( filter: { fields: { fileName: { eq: "GFF_0049" }}}) {
+    edges {
+      node {
+        ...homeImage
+      }
+    }
+  }
+  
+  img2: allFile( filter: { fields: { fileName: { eq: "GFF_0093" }}}) {
+    edges {
+      node {
+        ...homeImage
+      }
+    }
+  }
+  
+  img3: allFile( filter: { fields: { fileName: { eq: "GFF_0233" }}}) {
+    edges {
+      node {
+        ...homeImage
+      }
+    }
+  }
+}
+`;
