@@ -49,6 +49,18 @@ exports.sourceNodes = async ({actions, createNodeId, store, cache}) => {
                     value: 'true',
                 });
 
+                const fileParts = img.img.split("/");
+                let fileName = fileParts.pop();
+                fileName = fileName.split('.').slice(0, -1).join('.');
+                console.log('fileName: ' + fileName);
+
+                await createNodeField({
+                    node: fileNode,
+                    name: 'fileName',
+                    value: fileName
+
+                });
+
                 await createNodeField({
                     node: fileNode,
                     name: 'source',
