@@ -8,6 +8,7 @@ import 'typeface-open-sans';
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
 import ProjectCard from '../components/ProjectCard';
+import Img from 'gatsby-image'
 import { rotate, UpDown, UpDownWide, waveAnimation, heart } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
@@ -36,6 +37,11 @@ const Content = styled(ParallaxLayer)`
 
 const Hero = styled.div`
   ${tw('w-full xl:w-2/3')};
+`;
+
+const FallbackImage = styled.div`
+  ${tw('w-full text-center')};
+  margin: 0 auto;
 `;
 
 const Inner = styled.div`
@@ -138,13 +144,22 @@ return (
     <SEO />
     <Parallax pages={5}>
       <Divider speed={0.2} offset={0}>
+        ${(() => {
+          // only show fallback for non-chrome browsers, who can't be awesome and fill a svg background with an image
+          if (!window.chrome || !window.chrome.webstore) {
+            return (
+              <FallbackImage>
+                <Img fixed={data.img3.edges[0].node.childImageSharp.fixed}/>
+             </FallbackImage>
+            )
+          }
+        })()}
         <SVG icon="mapleLeaf" width={50} stroke={colors.orange} left="0%" top="20%" fill={"#e2d661"}/>
         <SVG icon="hexa" width={58} left="60%" top="70%" fill={"#aee261"} stroke={"#b28cea"}   />
         <SVG icon="box" width={26} stroke={"#4ba2de"}  fill={"#b28cea"} left="60%" top="15%" />
         <UpDown>
           <SVG icon="mapleLeaf"
                width="100%"
-               stroke={colors.orange}
                left="0%" top="20%"
                fill={`url(#${data.img1.edges[0].node.fields.fileName})`}
                img={data.img1.edges[0].node.childImageSharp.fixed.src}
@@ -159,10 +174,9 @@ return (
                img={data.img3.edges[0].node.childImageSharp.fixed.src}
                imgId={data.img3.edges[0].node.fields.fileName}
                imgStyle={{transform: "translate(-35px, -5px) scale(0.3)"}}
-               stroke={"#b28cea"}   />
+           />
           <SVG icon="box"
                width="100%"
-               stroke={"#4ba2de"}
                fill={`url(#${data.img2.edges[0].node.fields.fileName})`}
                img={data.img2.edges[0].node.childImageSharp.fixed.src}
                imgId={data.img2.edges[0].node.fields.fileName}
@@ -372,7 +386,7 @@ export const query = graphql`
     }
   }
   
-  img3: allFile( filter: { fields: { fileName: { eq: "GFF_0233" }}}) {
+  img3: allFile( filter: { fields: { fileName: { eq: "HR_GFF_0233" }}}) {
     edges {
       node {
         ...homeImage
