@@ -144,7 +144,7 @@ return (
     <SEO />
     <Parallax pages={5}>
       <Divider speed={0.2} offset={0}>
-        ${(() => {
+        {(() => {
           // only show fallback for non-chrome browsers, who can't be awesome and fill a svg background with an image
           if (typeof window != 'undefined' && (!window.chrome || !window.chrome.webstore)) {
             return (
